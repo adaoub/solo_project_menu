@@ -52,6 +52,6 @@ describe "integartio" do
     menu.add(menu_item2)
     order.select(menu_item1, 2)
     order.select(menu_item2, 1)
-    expect(order.receipt).to eq ("{\"rice\"=>10, \"pasta\"=>10} and your grand total is 20")
+    expect(order.receipt).to eq ("This is a receipt for john, {\"rice\"=>10, \"pasta\"=>10} and your grand total is 20")
   end
 end

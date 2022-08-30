@@ -42,7 +42,7 @@ class Order
         item_receipt[menu_item.name] += menu_item.price.to_i
       end
     end
-    return "#{item_receipt} and your grand total is #{total_price}"
+    return "This is a receipt for #{@name}, #{item_receipt} and your grand total is #{total_price}"
   end
 
   def display
