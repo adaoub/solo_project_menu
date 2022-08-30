@@ -26,9 +26,9 @@ uses asciiflow.com but you could also use excalidraw.com, draw.io, or miro.com_
 
 ```
 Menu class to see a list of dishes (methods: display, add, remove)
-MenuItem Class to add dishes to menue (methods: name, price)
-Order class to allow customer to select dishes from menu (methods: select, name)
-Verify Class to show a receipt with order details (methods: view_total)
+MenuItem Class to add dishes to menu (methods: name, price)
+Order class to allow customer to select dishes from menu as well as to view order details (methods: select, name, total_price, display)
+
 
 
 ```
@@ -74,21 +74,27 @@ class Order
   def name
   #returns name
   end
+
+  def total_price
+  #return total price
+  end
+
+  def display 
+  #return order object
+  end
+
+  def receipt
+  #return an itemised receipt with total price
+  eend
   
-  def select ()
-  #return the selected menu item
+  def select(item, qunatity)  #item is the menu_item instance  and quanity is number of dishes wanted
+
+  #adds order to an array
   end
 end
 
-class Verify
-  def initialise (order) #order is an instance of order
-  #.....
-  end
 
-  def view_all
-  #return a receipt of order including dish name and price and name of customer
-  end
-end
+
 
 
 
