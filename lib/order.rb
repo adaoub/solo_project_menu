@@ -1,6 +1,10 @@
+require "twilio-ruby"
+require "dotenv/load"
+
 class Order
-  def initialize(name, menu) #menu is an instance of Menu, name is a string of customer name
+  def initialize(name, menu, phone_num) #menu is an instance of Menu, name is a string of customer name
     @name = name
+    @phone_num = phone_num
     @menu = menu
     @order = []
   end
@@ -47,5 +51,11 @@ class Order
 
   def display
     @order
+  end
+
+  def confirmation_text(time, send_sms)
+    order_time_arrival = time + (30 * 60)
+    message = "Thank you! Your order was placed and will be delivered before #{order_time_arrival}"
+    send_sms.sms(to: @phone_num, body: message)
   end
 end

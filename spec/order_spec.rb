@@ -4,7 +4,7 @@ describe Order do
   it "selects order items" do
     fake_item = double :fake_item
     fake_menu = double :fake_menu, add: nil
-    order = Order.new("john", fake_menu)
+    order = Order.new("john", fake_menu, "+447473990068")
     fake_menu.add(fake_item)
     order.select(fake_item, 2)
     expect(order.display).to eq [fake_item, fake_item]
@@ -13,7 +13,7 @@ describe Order do
   it "return s total order price" do
     fake_item = double :fake_item, price: "10"
     fake_menu = double :fake_menu, add: nil
-    order = Order.new("john", fake_menu)
+    order = Order.new("john", fake_menu, "+447473990068")
     fake_menu.add(fake_item)
     order.select(fake_item, 2)
     expect(order.total_price).to eq(20)
@@ -22,7 +22,7 @@ describe Order do
   it "returns items joined together" do
     fake_item = double :fake_item, name: "rice"
     fake_menu = double :fake_menu, add: nil
-    order = Order.new("john", fake_menu)
+    order = Order.new("john", fake_menu, "+447473990068")
     fake_menu.add(fake_item)
     order.select(fake_item, 2)
     expect(order.order_item).to eq("rice, rice")
@@ -32,7 +32,7 @@ describe Order do
     fake_item = double :fake_item, name: "rice", price: "5"
     fake_item2 = double :fake_item2, name: "pasta", price: "10"
     fake_menu = double :fake_menu, add: nil
-    order = Order.new("john", fake_menu)
+    order = Order.new("john", fake_menu, "+447473990068")
     fake_menu.add(fake_item)
     fake_menu.add(fake_item2)
     order.select(fake_item, 2)
