@@ -109,7 +109,11 @@ combinations that reflect the ways in which the system will be used._
 ```ruby
 # EXAMPLE
   
-
+    menu_item1 = MenuItem.new("rice", "£5.99")
+    order = Order.new("john", menu = Menu.new, ENV["PHONE_NUM"])
+    menu.add(menu_item1) 
+    order.select(menu_item1, 1)
+    order.display #=> [menu_item1, menu_item2]
 
 ```
 
@@ -120,7 +124,12 @@ a more granular level of detail._
 
 ```ruby
 # EXAMPLE
-  
+    fake_item = double :fake_item
+    fake_menu = double :fake_menu, add: nil
+    order = Order.new("john", fake_menu, ENV["PHONE_NUM"])
+    fake_menu.add(fake_item)
+    order.select(fake_item, 2)
+    order.display #=> [fake_item, fake_item]
 
 ```
 
