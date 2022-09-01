@@ -69,4 +69,16 @@ describe "integartion" do
       order.confirmation_text(time, send_sms)
     end
   end
+
+  xit "return name of dish next to price using the receipt_output method" do
+    menu_item1 = MenuItem.new("rice", "5")
+    io = double :io
+    order = Order.new("john", menu = Menu.new, ENV["PHONE_NUM"], io)
+    menu.add(menu_item1)
+    order.select(menu_item1, 1)
+
+    expect(io).to receive(:puts).with("rice : 5")
+    expect(io).to receive(:puts).with("Your total order costs £5")
+    order.receipt_output
+  end
 end

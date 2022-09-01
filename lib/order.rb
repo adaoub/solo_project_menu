@@ -20,13 +20,10 @@ class Order
   end
 
   def total_price
-    sum = 0
     # @order.reduce(0) { |sum, menu_item| sum + menu_item.price.to_f }
-    @order.each do |menu_item|
-      total = menu_item.price.to_i
-      sum += total
+    @order.sum do |menu_item|
+      menu_item.price.to_i
     end
-    return sum
   end
 
   def order_item
@@ -58,4 +55,14 @@ class Order
     message = "Thank you! Your order was placed and will be delivered before #{order_time_arrival}"
     send_sms.sms(to: @phone_num, body: message)
   end
+end
+
+#Below is another receipt method that just prints the info
+#rather than store it in a hash like the receipt method. I still tested this using io doubles
+#but have noq skipped them so they don't  break the other tests.
+def receipt_output
+  @order.each do |menu_item|
+    @io.puts "#{menu_item.name} : #{menu_item.price}"
+  end
+  @io.puts "Your total order costs £#{total_price}"
 end
